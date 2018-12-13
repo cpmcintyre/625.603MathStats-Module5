@@ -1,0 +1,37 @@
+\documentclass[svgnames]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\newtheorem{mydef}{Given}
+\newtheorem{mytheorem}{Theorem}
+\usepackage{enumitem}
+\usepackage{venndiagram}
+\usepackage{smartdiagram}
+\usepackage{caption}
+\usepackage{subcaption}
+%\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
+\usepackage{pgfplots}
+
+\begin{document}
+\section{3.8.13}
+ Suppose that $X$ and $Y$ are two independent random variables, where $f_X(x) = xe^{-x}, x \geq 0$, and $f_Y(y) = e^{-y}, y \geq 0$. Find the pdf of $Y/X$.
+ 
+$$ f_W(w)=\int_{0}^{w}\left|x\right| f_X(x) f_y(wx)$$
+
+$$ f_W(w)=\int_{0}^{w}x x e^{-x}e^{-wx}dx$$
+
+$$ f_W(w)=\int_{0}^{w}x^2 e^{-x(1-w)}dx $$
+Try This, Multiply by $1=\frac{1-w}{1-w}$,
+
+$$ f_W(w)=\frac{1}{1-w}\int_{0}^{w}x^2(1-w) e^{-x(1-w)}dx $$
+
+This is basically the expected value of $x^2$ against an exponential distribution with parameter $\lambda= 1-w$.
+
+Then we also know for the exponential distribution the $Var(x)=E[x^2]-E[x]^2$, and for the exponential distribution is $Var(x)=\frac{1}{\lambda^2}=E[x^2] - \Big[\frac{1}{\lambda}\Big]^2$.
+
+Therefore, $E[x^2] =\frac{2}{\lambda^2}$. Going back to our integral,
+
+$$ f_W(w)=\frac{1}{1-w}\int_{0}^{w}x^2(1-w) e^{-x(1-w)}dx = \frac{1}{1-w} E\Big[x^2\Big] =\frac{1}{1-w}\cdot \frac{2}{(1-w)^2}=\frac{2}{(1-w)^3}, w \geq 0$$
+\end{document}
